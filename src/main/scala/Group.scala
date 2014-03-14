@@ -10,6 +10,6 @@ abstract class Group[E] {
     else if(n%2==0)
       return exp(combines(e,e), n/2)
     else
-      return times(e,exp(combines(e,e), (n-1)/2))
+      return combines(e,exp(combines(e,e), (n-1)/2))
   }
 }
