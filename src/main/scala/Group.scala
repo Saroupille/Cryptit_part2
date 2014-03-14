@@ -1,7 +1,8 @@
-abstract class Group[E] {
+trait Group {
+  type E
   val unit : E
   val generator : E
-  abstract def combines(e1: E, e2: E): E
+  def combines(e1: E, e2: E): E
   def exp (e: E, n: Int): E = {
     if(n==0)
       return unit

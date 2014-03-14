@@ -1,4 +1,16 @@
+trait PublicKey {
+	type T
+	def getKey: T
+}
+
+trait PrivateKey {
+	type T
+	def getKey: T
+}
+
 trait CryptoSystem {
-  def encrypt(msg:String, pub:PublicKey, rdm:Int): String
-  def decrypt(msg:String, priv: PrivateKey): String
+  type PK <: PublicKey
+  type SK <: PrivateKey
+  def encrypt(msg:String, pub:PK, rdm:Int): String
+  def decrypt(msg:String, priv:SK): String
 }

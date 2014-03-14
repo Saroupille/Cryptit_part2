@@ -10,5 +10,12 @@ import java.io.File
 
 object StandardMain {
   def main(args: Array[String]) {
+  	val str = "j'adore ecouter la radio toute la journee";
+  	val crypter = new CryptoCesar();
+  	val (pk,sk) = crypter.generateKeys;
+  	println (str);
+  	val cryptstr = crypter.encrypt(str, pk, 10);
+  	println (cryptstr);
+  	println (crypter.decrypt(cryptstr, sk));
   }
 }
