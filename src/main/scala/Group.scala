@@ -1,9 +1,19 @@
-trait Group {
-  type E
+import scala.util.Random
+
+trait Group[E] {
   val unit : E
   val generator : E
+  val order : BigInt
+
   def combines(e1: E, e2: E): E
-  def exp (e: E, n: Int): E = {
+  def toString(e : E): String 
+  def fromString(s : String) : E
+  def toBigInt(e : E) : BigInt
+  def fromBigInt(n : BigInt) : E
+
+  def getOrder : BigInt = order
+  def getGenerator : E = generator
+  def exp (e: E, n: BigInt): E = {
     if(n==0)
       return unit
     else if(n==1)
