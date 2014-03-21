@@ -17,5 +17,7 @@ object StandardMain {
   	val cryptstr = crypter.encrypt(str, pk, 10);
   	println (cryptstr);
   	println (crypter.decrypt(cryptstr, sk));
+    val rsa = new RSA();
+    rsa.generateKeys
   }
 }
