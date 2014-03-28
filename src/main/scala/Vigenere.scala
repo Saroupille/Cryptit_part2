@@ -15,7 +15,15 @@ class CryptoVigenere extends CryptoSystem {
 	type SK = VigenerePrivateKey
 
 	def generateKeys : (VigenerePublicKey, VigenerePrivateKey) = {
-		(new VigenerePublicKey("musique"), new VigenerePrivateKey("musique"));
+		def generateString (length : Int) : String = {
+			var chars = new Array[Char](length);
+			for (i <- 0 to length - 1) {
+				chars(i) = generator.nextInt(256).toChar;
+			}
+			chars.mkString;
+		}
+		val randomString = generateString(generator.nextInt(5) + 5);
+		(new VigenerePublicKey(randomString), new VigenerePrivateKey(randomString));
 	}
 
 	def slide(a : Char, n : Int) : Char = {
