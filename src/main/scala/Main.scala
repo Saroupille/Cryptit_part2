@@ -11,7 +11,7 @@ import java.io.File
 object StandardMain {
   def main(args: Array[String]) {
   	val str = "j'adore ecouter la radio toute la journee";
-  	/* Oui, ceci est un putain de nombre premier à 300 chiffres */
+  	/* Oui, ceci est nombre premier à 300 chiffres */
   	val group = new Zadd(BigInt("531872289054204184185084734375133399408303613982130856645299464930952178606045848877129147820387996428175564228204785846141207532462936339834139412401975338705794646595487324365194792822189473092273993580587964571659678084484152603881094176995594813302284232006001752128168901293560051833646881436219"));
   	val crypter = new CryptoElGamal(group);
   	val (pk,sk) = crypter.generateKeys;
@@ -20,13 +20,12 @@ object StandardMain {
   	println (cryptstr);
   	println (crypter.decrypt(cryptstr, sk));
 
-  	/*
     val rsa = new RSA();
     val keys=rsa.generateKeys;
-    val text="Bonjour je m'emmerde à mourrir sur la plage à abandonner coquillages et crustacées. Et ma chaîne est super long pour que ça plante !Bonjour je m'emmerde à mourrir sur la plage à abandonner coquillages et crustacées. Bonjour je m'emmerde à mourrir "
+    val text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
     val cipher=rsa.encrypt(text, keys._1,10);
     //println(cipher)
-    /*
     val bytes=BigInt(cipher).toByteArray
     println(bytes.length)
     //println(bytes)
@@ -47,5 +46,7 @@ object StandardMain {
       print(bytes2(a))
     println()*/
     println(rsa.decrypt(cipher,keys._2))*/
+
+    println(rsa.decrypt(cipher,keys._2))
   }
 }
