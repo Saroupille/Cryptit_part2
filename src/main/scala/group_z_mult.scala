@@ -1,19 +1,19 @@
 class Zmult (p:BigInt) extends Group[BigInt] {
   type E = BigInt
   val unit=BigInt(1)
-  val generator=p-1
-  val order=p
+  val generator=BigInt(5)
+  val order=p-1
 
   def toString(e : E) : String = {
   	e.toString
   }
 
   def fromString(s : String) : E = {
-  	BigInt(s)
+  	(BigInt(s) % order)
   }
 
   def combines(a:E, b:E) : E = {
-    return (a*b)%order
+    return ((a*b)%(order+1))
   }
 
   def toBigInt(e : E) : BigInt = {
@@ -21,6 +21,6 @@ class Zmult (p:BigInt) extends Group[BigInt] {
   }
 
   def fromBigInt(n : BigInt) : E = {
-  	return n % (order - 1) + 1
+  	return (n % order)
   }
 }

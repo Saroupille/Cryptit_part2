@@ -15,14 +15,14 @@ class CryptoElGamal[E] (group : Group[E]) extends CryptoSystem {
 	type SK = ElGamalPrivateKey
 
 	def generateKeys : (ElGamalPublicKey, ElGamalPrivateKey) = {
-		val randomInt = BigInt(1000, generator)%(group.getOrder-1) + 1;
-		val expoElt = group.exp(group.getGenerator, randomInt);
+		val randomInt = BigInt(1000, generator)%(group.order-1) + 1;
+		val expoElt = group.exp(group.generator, randomInt);
 		(new ElGamalPublicKey(expoElt), new ElGamalPrivateKey(randomInt));
 	}
 
 	def encrypt(msg:String, pub:PK, rdm:Int): String = {
-		val randomInt = BigInt(1000, generator)%(group.getOrder-1) + 1;
-		val expoElt = group.exp(group.getGenerator, randomInt);
+		val randomInt = BigInt(1000, generator)%(group.order-1) + 1;
+		val expoElt = group.exp(group.generator, randomInt);
 		val sharedSecret = group.exp(pub.getKey, randomInt);
 		def injectString : E = {
 			var stringCode : BigInt = 0;
@@ -45,7 +45,7 @@ class CryptoElGamal[E] (group : Group[E]) extends CryptoSystem {
  			(group.fromString (msg.substring(0, i)), group.fromString (msg.substring(i+1)))
  		}
  		val (e1, e2) = cutString;
- 		val sharedSecret = group.exp(e1, group.getOrder - priv.getKey);
+ 		val sharedSecret = group.exp(e1, group.order - priv.getKey);
  		val cryptedMsg = group.toBigInt (group.combines(e2, sharedSecret));
  		def decryptString : String = {
  			val length = cryptedMsg.bitLength / 8 + 1;
